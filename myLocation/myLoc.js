@@ -25,6 +25,8 @@ function displayLocation(position) {
     var km = computeDistance(position.coords, ourCoords);
     var distance = document.getElementById("distance");
     distance.innerHTML = "You are " + km + " km from the WickedlySmart HQ";
+    // 调用showMap
+    showMap(position.coords);
 }
 
 //显示错误信息
@@ -65,4 +67,25 @@ function computeDistance(startCoords, destCoords) {
 function degreesToRadians(degrees) {
     var radians = (degrees * Math.PI) / 180;
     return radians;
+}
+
+// 创建地图
+var googleLatAndLong = new googleLatAndLong.maps.LatLng(latitude, longitude);
+var mapOptions = {
+    zoom: 10,
+    center: googleLatAndLong,
+    mapTypeId: googleLatAndLong.maps.MapTypeId.ROADMAP
+};
+
+// 显示地图
+var map;
+function showMap() {
+    var googleLatAndLong = new googleLatAndLong.maps.LatLng(coords.latitude, coords.longitude);
+    var mapOptions = {
+        zoom: 10,
+        center: googleLatAndLong,
+        mapTypeId: googleLatAndLong.maps.MapTypeId.ROADMAP
+    };
+    var mapDiv = document.getElementById("map");
+    map = new googleLatAndLong.maps.Map(mapDiv, mapOptions);
 }
